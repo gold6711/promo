@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+  <script src="jq.js"></script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Promo</title>
+    <style>
+
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+        var dict = {};
+         var ordGeo = {};
+        var regions;
+        var orders;
+        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+
+        var icons = {
+          parking: {
+            icon: iconBase + 'parking_lot_maps.png'
+          },
+          order: {
+            icon: iconBase + 'library_maps.png'
+          },
+          info: {
+            icon: iconBase + 'info-i_maps.png'
+          }
+        };
+
+    function toGoogle(array){
+
+        var result = [];
+        for(var i = 0; i < array.length; i++) {
+            result.push({'lat': array[i][1], 'lng': array[i][0] })
+        }
+        return result;
+
+    }
+
+
+
+
+
+    function setPath(Polygon, map) {
+      var regions;
+      var orders;
+
+
+      $.getJSON("./reg2.json", function(json) {
+      regions = json.features;
+	  
+	  $.getJSON("./p.json", function(json2){ 
+      orders = json2;
+      start();
+    })
+	
+    })
+
+
+
+function start(){
+
+        var names = [];
+        for(var i = 0; i < regions.length; i++) {
+        var newCoords = toGoogle(regions[i].geometry.coordinates[0]);
+        var newPoly = new Polygon({
+          paths: newCoords,
+          strokeColor: '#6600d4',
+          strokeOpacity: 0.5,
+          strokeWeight: 2,
+          fillColor: '#6600d4',
+          fillOpacity: 0.2
+        });
+
+        var title = regions[i].properties.description;
+        new google.maps.Marker({
+          position: newCoords[0],
+          map: map,
+          title: regions[i].properties.description})
+
+        newPoly.setMap(map);
+
+          for (var j = 0; j < orders.length; j++) {
+          var pos = new google.maps.LatLng(orders[j].coordinates[1], orders[j].coordinates[0]);
+          if (google.maps.geometry.poly.containsLocation(pos, newPoly)) {
+                 console.log(regions[i].properties.description, orders[j].ord);
+                 ordGeo[orders[j].ord] = regions[i].properties.description;
+                 if (dict[regions[i].properties.description]) {
+                  dict[regions[i].properties.description]++
+                 } else {
+                  dict[regions[i].properties.description] = 1
+                 }
+
+                        new google.maps.Marker({
+                            position: pos,
+                            map: map,
+							title: orders[j].ord,
+                            icon: {
+                              path: google.maps.SymbolPath.CIRCLE,
+                              fillColor: 'green',
+                              fillOpacity: .2,
+                              strokeColor: 'white',
+                              strokeWeight: .5,
+                              scale: 10
+                            }
+                          })
+
+               }
+
+               
+
+        }
+    }
+console.log(dict);
+}
+
+}
+
+
+
+
+
+
+      function initMap() {
+
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 55.751244, lng: 37.618423},
+          zoom: 12
+        });
+
+        setPath(google.maps.Polygon, map);
+
+        
+      }
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqt3RzzFfzYt4oA50UWtLNFS2sxXh6M7o&libraries=geometry&callback=initMap"
+         async defer></script>
+
+
+      <aside>
+        <form id="count">
+        <label>ID:</label><br>
+
+          <input type="number" name="id"><br>
+          <label>Цена единичного заказы:</label><br>
+          <input type="number" id="preo"><br>
+
+          <button type="submit">Расчитать</button>
+          
+        </form>
+        <div class="info" id="sals">
+        <label>Регион:</label><br>
+          <div class="reg-name"></div>
+          <label>Количество заказов:</label><br>
+          <div class="count-out"></div>
+          <label>Зароботная плата:</label><br>
+          <div class="salary"></div>
+           <input type="text" id="comment"><br>
+           <button id="paid">Перенести в оплаченные</button>
+
+        </div>
+        <form id="find">
+        <label>Номер заказа:</label><br>
+
+          <input type="number" name="ord"><br>
+
+          <button type="submit">Найти регион</button>
+
+        </form>
+        <div class="info" id="regi">
+        <label>Регион:</label><br>
+          <div class="reg-out"></div>
+        </div>
+        <hr>
+      </aside>
+      <div class="alert" style="display: none;">
+        <div class="close"><img src="1600.png"></div>
+        <h2 class="inner">
+          Успешно оплачено!
+        </h2>
+      </div>
+      <style type="text/css">
+        aside {
+
+          position: fixed;
+          top:0;
+          right: 0;
+          background: rgba(0,0,0,0.5);
+          height: 100%;
+          width: 400px;
+        }
+        aside form {
+          padding: 30px;
+        }
+        aside {
+          color: white;
+        }
+        .info {
+          padding: 30px;
+          display: none;
+        }
+        .alert {
+          max-width: 100%;
+          position: fixed;
+          top:50%;
+          margin-top: -25%;
+          left: 50%;
+          margin-left: -350px;
+          width: 700px;
+          background: rgba(0,0,0,0.5);
+          color: white;
+          border-radius: 5px;
+
+        }
+        .inner {
+          width: 100%;
+          text-align: center;
+        }
+        .close {
+          height: 100%;
+          padding: 5px;
+        }
+        .close img {
+          float: right;
+          max-width: 20px;
+        }
+      </style>
+          <script type="text/javascript">
+            $(document).ready(function(){
+              var sum = 0;
+              var userId = 0;
+              var comment = '';
+              $("#count").submit(function(e){
+
+                e.preventDefault();
+
+                $.post("/userloc.php", $(this).serialize(), function(response) {
+                  var reg = response.split('\n')[0];
+                  $(".reg-name").text(reg);
+                  var count = dict[reg];
+                  sum = parseInt($("#preo").val()*parseInt(count));
+                  $(".count-out").text(count);
+                  $(".salary").text(sum);
+                  $("#sals").slideDown();
+
+
+                })
+              })
+                $("#find").submit(function(e){
+                e.preventDefault();
+                $('.reg-out').text(ordGeo[$('input[name="ord"]').val()]);
+                $("#regi").slideDown();
+                })
+
+                $("#paid").click(function(){
+                  userId = $('input[name="id"]').val();
+                  comment = ToString($("#comment").val());
+                  console.log(userId, comment);
+                  console.log(userId);
+                  $.post("proceed.php", {"summa": sum, "user": userId, "comment": comment}, function() {
+                    $(".alert").slideDown();
+                  })
+                })
+              });
+            $(".close").click(function() {
+              $(this).parent().slideUp();
+            })
+          </script>
+  </body>
+</html>

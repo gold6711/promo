@@ -1,0 +1,45 @@
+<FilesMatch ".(sql|csv|htaccess|php|gz|jpg)$">
+ Order Allow,Deny
+ Deny from all
+</FilesMatch>
+<Files index.php>
+allow from all
+</Files>
+<Files logon.php>
+allow from all
+</Files>
+<Files map*.php>
+allow from all
+</Files>
+<Files jquery.php>
+allow from all
+</Files>
+<Files cron.php>
+allow from all
+</Files>
+<Files call.php>
+allow from all
+</Files>
+<Files *.geojson>
+allow from all
+</Files>
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ?act=$1 [L,QSA]
+
+<FilesMatch ".(js|css|pdf|ttf|png|jpg|mp3)$">
+Header set Cache-Control "max-age=604800, public"
+</FilesMatch>
+<FilesMatch ".(geojson|php|html)$">
+Header set Cache-Control "max-age=-1, no-cache"
+</FilesMatch>
+Options All -Indexes
+php_value error_reporting 30711
+php_flag display_errors on
+
+php_value max_execution_time 30
+php_value memory_limit 24M
+php_value session.gc_maxlifetime 604800
+php_value session.cookie_lifetime 604800

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="promo@localhost" uuid="743c0197-90d1-49db-95d8-f1e01577ef69">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>promo.*</schema-pattern>
+      <default-schemas>promo.*</default-schemas>
+    </data-source>
+  </component>
+</project>

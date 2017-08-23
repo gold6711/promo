@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+
+  <script src="../jquery-3.1.1.min.js"></script>
+  <script src="jquery-ui.min.js"></script>
+
+  <script src="jquery.datepicker.extension.range.min.js"></script>
+  <link rel="stylesheet" href="jquery-ui-1.10.3.custom.css">
+  <style>html,body{margin:0;padding:0;}</style>
+</head>
+<body>
+<div id="date_range"></div>
+
+  <script>
+$(function() {$.datepicker.regional['ru'] = {
+closeText: 'Закрыть',
+prevText: '&#x3c;Пред',
+nextText: 'След&#x3e;',
+currentText: 'Сегодня',
+monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь',
+'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн',
+'Июл','Авг','Сен','Окт','Ноя','Дек'],
+dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+dateFormat: 'yy-mm-dd',
+firstDay: 1,
+isRTL: false
+};
+$.datepicker.setDefaults($.datepicker.regional['ru']);
+  $('#date_range').datepicker({
+    range: 'multiple', // режим - выбор нескольких дат 
+    range_multiple_max: '60', // макимальное число выбираемых дат
+    onSelect: function(dateText, inst, extensionRange) {
+      localStorage.setItem("days", extensionRange.datesText.join(','));
+    }
+  });
+
+var days=localStorage.getItem("predays");
+if(days){$('#date_range').datepicker('setDate', days.split(','));}
+});
+  </script>
+</body>
+</html>
