@@ -22,375 +22,397 @@
       <table id="13" parent="1" name="users"/>
       <table id="14" parent="1" name="vacancy"/>
       <table id="15" parent="1" name="worktime"/>
-      <column id="16" parent="2" name="datetime">
+      <table id="16" parent="1" name="supply_mat"/>
+      <column id="17" parent="2" name="datetime">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="17" parent="2" name="text">
+      <column id="18" parent="2" name="text">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="18" parent="2" name="user">
+      <column id="19" parent="2" name="user">
         <mandatory>1</mandatory>
         <data-type>int(4)</data-type>
       </column>
-      <column id="19" parent="2" name="autor">
+      <column id="20" parent="2" name="autor">
         <mandatory>1</mandatory>
         <data-type>int(4)</data-type>
       </column>
-      <key id="20" parent="2" name="PRIMARY">
+      <key id="21" parent="2" name="PRIMARY">
         <columns>datetime</columns>
         <primary>1</primary>
       </key>
-      <column id="21" parent="3" name="id">
+      <column id="22" parent="3" name="id">
         <mandatory>1</mandatory>
         <data-type>int(6)</data-type>
       </column>
-      <column id="22" parent="3" name="name">
+      <column id="23" parent="3" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="23" parent="3" name="phone">
+      <column id="24" parent="3" name="phone">
         <mandatory>1</mandatory>
         <data-type>varchar(11)</data-type>
       </column>
-      <column id="24" parent="3" name="call_id">
+      <column id="25" parent="3" name="call_id">
         <mandatory>1</mandatory>
         <data-type>int(6)</data-type>
       </column>
-      <key id="25" parent="3" name="PRIMARY">
+      <key id="26" parent="3" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="26" parent="4" name="id">
+      <column id="27" parent="4" name="id">
         <mandatory>1</mandatory>
         <data-type>int(6)</data-type>
       </column>
-      <column id="27" parent="4" name="oid">
+      <column id="28" parent="4" name="oid">
         <mandatory>1</mandatory>
         <data-type>int(5)</data-type>
       </column>
-      <column id="28" parent="4" name="ord">
+      <column id="29" parent="4" name="ord">
         <mandatory>1</mandatory>
         <data-type>int(5)</data-type>
       </column>
-      <column id="29" parent="4" name="user">
+      <column id="30" parent="4" name="user">
         <mandatory>1</mandatory>
         <data-type>int(5)</data-type>
       </column>
-      <column id="30" parent="4" name="summa">
+      <column id="31" parent="4" name="summa">
         <mandatory>1</mandatory>
         <data-type>int(6)</data-type>
       </column>
-      <column id="31" parent="4" name="cdate">
+      <column id="32" parent="4" name="cdate">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="32" parent="4" name="comment">
+      <column id="33" parent="4" name="comment">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="33" parent="4" name="office">
+      <column id="34" parent="4" name="office">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <key id="34" parent="4" name="PRIMARY">
+      <key id="35" parent="4" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="35" parent="5" name="id">
+      <column id="36" parent="5" name="id">
         <mandatory>1</mandatory>
         <data-type>int(4)</data-type>
       </column>
-      <column id="36" parent="5" name="name">
+      <column id="37" parent="5" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="37" parent="5" name="district">
+      <column id="38" parent="5" name="district">
         <mandatory>1</mandatory>
         <data-type>varchar(128)</data-type>
       </column>
-      <column id="38" parent="5" name="county">
+      <column id="39" parent="5" name="county">
         <mandatory>1</mandatory>
         <data-type>varchar(64)</data-type>
       </column>
-      <key id="39" parent="5" name="PRIMARY">
+      <key id="40" parent="5" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="40" parent="6" name="id">
+      <column id="41" parent="6" name="id">
         <mandatory>1</mandatory>
         <data-type>int(2)</data-type>
       </column>
-      <column id="41" parent="6" name="parent">
+      <column id="42" parent="6" name="parent">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <column id="42" parent="6" name="status">
+      <column id="43" parent="6" name="status">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="43" parent="6" name="name">
+      <column id="44" parent="6" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(24)</data-type>
       </column>
-      <column id="44" parent="6" name="link">
+      <column id="45" parent="6" name="link">
         <mandatory>1</mandatory>
         <data-type>varchar(16)</data-type>
       </column>
-      <column id="45" parent="6" name="sequence">
+      <column id="46" parent="6" name="sequence">
         <mandatory>1</mandatory>
         <data-type>int(2)</data-type>
       </column>
-      <column id="46" parent="6" name="icon">
+      <column id="47" parent="6" name="icon">
         <mandatory>1</mandatory>
         <data-type>varchar(16)</data-type>
       </column>
-      <key id="47" parent="6" name="PRIMARY">
+      <key id="48" parent="6" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="48" parent="7" name="id">
+      <column id="49" parent="7" name="id">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <column id="49" parent="7" name="name">
+      <column id="50" parent="7" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(24)</data-type>
       </column>
-      <column id="50" parent="7" name="short">
+      <column id="51" parent="7" name="short">
         <mandatory>1</mandatory>
         <data-type>varchar(4)</data-type>
       </column>
-      <column id="51" parent="7" name="phone">
+      <column id="52" parent="7" name="phone">
         <mandatory>1</mandatory>
         <data-type>varchar(11)</data-type>
       </column>
-      <key id="52" parent="7" name="PRIMARY">
+      <key id="53" parent="7" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="53" parent="8" name="id">
+      <column id="54" parent="8" name="id">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <column id="54" parent="8" name="name">
+      <column id="55" parent="8" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(24)</data-type>
       </column>
-      <column id="55" parent="8" name="color">
+      <column id="56" parent="8" name="color">
         <mandatory>1</mandatory>
         <data-type>varchar(16)</data-type>
       </column>
-      <column id="56" parent="8" name="worktime">
+      <column id="57" parent="8" name="worktime">
         <mandatory>1</mandatory>
         <data-type>varchar(5)</data-type>
       </column>
-      <column id="57" parent="8" name="short">
+      <column id="58" parent="8" name="short">
         <mandatory>1</mandatory>
         <data-type>varchar(4)</data-type>
       </column>
-      <key id="58" parent="8" name="PRIMARY">
+      <key id="59" parent="8" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="59" parent="9" name="id">
+      <column id="60" parent="9" name="id">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <column id="60" parent="9" name="post">
+      <column id="61" parent="9" name="post">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <column id="61" parent="9" name="summa">
+      <column id="62" parent="9" name="summa">
         <mandatory>1</mandatory>
         <data-type>int(3)</data-type>
       </column>
-      <column id="62" parent="9" name="hour">
+      <column id="63" parent="9" name="hour">
         <mandatory>1</mandatory>
         <data-type>int(3)</data-type>
       </column>
-      <column id="63" parent="9" name="source">
+      <column id="64" parent="9" name="source">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <key id="64" parent="9" name="PRIMARY">
+      <key id="65" parent="9" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="65" parent="10" name="id">
+      <column id="66" parent="10" name="id">
         <mandatory>1</mandatory>
         <data-type>int(5)</data-type>
       </column>
-      <column id="66" parent="10" name="ord">
+      <column id="67" parent="10" name="ord">
         <mandatory>1</mandatory>
         <data-type>int(5)</data-type>
       </column>
-      <column id="67" parent="10" name="user">
+      <column id="68" parent="10" name="user">
         <mandatory>1</mandatory>
         <data-type>int(4)</data-type>
       </column>
-      <column id="68" parent="10" name="project">
+      <column id="69" parent="10" name="project">
         <mandatory>1</mandatory>
         <data-type>varchar(4)</data-type>
       </column>
-      <column id="69" parent="10" name="cdate">
+      <column id="70" parent="10" name="cdate">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="70" parent="10" name="raion">
+      <column id="71" parent="10" name="raion">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="71" parent="10" name="street">
+      <column id="72" parent="10" name="street">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="72" parent="10" name="paid">
+      <column id="73" parent="10" name="paid">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <column id="73" parent="10" name="source">
+      <column id="74" parent="10" name="source">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <column id="74" parent="10" name="claster">
+      <column id="75" parent="10" name="claster">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <key id="75" parent="10" name="PRIMARY">
+      <key id="76" parent="10" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="76" parent="11" name="id">
+      <column id="77" parent="11" name="id">
         <mandatory>1</mandatory>
         <data-type>int(6)</data-type>
       </column>
-      <column id="77" parent="11" name="cdate">
+      <column id="78" parent="11" name="cdate">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="78" parent="11" name="user">
+      <column id="79" parent="11" name="user">
         <mandatory>1</mandatory>
         <data-type>int(5)</data-type>
       </column>
-      <key id="79" parent="11" name="PRIMARY">
+      <key id="80" parent="11" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="80" parent="12" name="id">
+      <column id="81" parent="12" name="id">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <column id="81" parent="12" name="name">
+      <column id="82" parent="12" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(16)</data-type>
       </column>
-      <key id="82" parent="12" name="PRIMARY">
+      <key id="83" parent="12" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="83" parent="13" name="id">
+      <column id="84" parent="13" name="id">
         <mandatory>1</mandatory>
         <data-type>int(5)</data-type>
       </column>
-      <column id="84" parent="13" name="name">
+      <column id="85" parent="13" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(128)</data-type>
       </column>
-      <column id="85" parent="13" name="status">
+      <column id="86" parent="13" name="status">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <column id="86" parent="13" name="login">
+      <column id="87" parent="13" name="login">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="87" parent="13" name="pass">
+      <column id="88" parent="13" name="pass">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="88" parent="13" name="phone_l">
+      <column id="89" parent="13" name="phone_l">
         <mandatory>1</mandatory>
         <data-type>varchar(11)</data-type>
       </column>
-      <column id="89" parent="13" name="phone_p">
+      <column id="90" parent="13" name="phone_p">
         <mandatory>1</mandatory>
         <data-type>varchar(11)</data-type>
       </column>
-      <column id="90" parent="13" name="passport">
+      <column id="91" parent="13" name="passport">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="91" parent="13" name="source">
+      <column id="92" parent="13" name="source">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <column id="92" parent="13" name="raion">
+      <column id="93" parent="13" name="raion">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="93" parent="13" name="street">
+      <column id="94" parent="13" name="street">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="94" parent="13" name="claster">
+      <column id="95" parent="13" name="claster">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="95" parent="13" name="cdate">
+      <column id="96" parent="13" name="cdate">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="96" parent="13" name="mdate">
+      <column id="97" parent="13" name="mdate">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="97" parent="13" name="day">
+      <column id="98" parent="13" name="day">
         <mandatory>1</mandatory>
         <data-type>int(7)</data-type>
       </column>
-      <column id="98" parent="13" name="quantity">
+      <column id="99" parent="13" name="quantity">
         <mandatory>1</mandatory>
         <data-type>int(4)</data-type>
       </column>
-      <column id="99" parent="13" name="office">
+      <column id="100" parent="13" name="office">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <key id="100" parent="13" name="PRIMARY">
+      <key id="101" parent="13" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="101" parent="14" name="id">
+      <column id="102" parent="14" name="id">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <column id="102" parent="14" name="name">
+      <column id="103" parent="14" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <key id="103" parent="14" name="PRIMARY">
+      <key id="104" parent="14" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="104" parent="15" name="id">
+      <column id="105" parent="15" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="105" parent="15" name="user">
+      <column id="106" parent="15" name="user">
         <mandatory>1</mandatory>
         <data-type>int(5)</data-type>
       </column>
-      <column id="106" parent="15" name="datetime">
+      <column id="107" parent="15" name="datetime">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="107" parent="15" name="work">
+      <column id="108" parent="15" name="work">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
       </column>
-      <key id="108" parent="15" name="PRIMARY">
+      <key id="109" parent="15" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="110" parent="16" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="111" parent="16" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(6)</data-type>
+      </column>
+      <column id="112" parent="16" name="given_mat">
+        <mandatory>1</mandatory>
+        <data-type>int(4) unsigned</data-type>
+      </column>
+      <column id="113" parent="16" name="data">
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <key id="114" parent="16" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>

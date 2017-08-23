@@ -97,8 +97,12 @@
 				<?if(users($id,'status')<4){?>
 					<tr><td>Логин</td><td><?=users($id,'login')?></td></tr>
 					<?}else{?>
-					<tr><td>Добавить материалы</td><td><?=users($id,'quantity')?>
-					<a href='map.php?q=<?=$id?>' target='_blank' class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-map-marker'></span> Просмотр</a></td></tr>
+					<tr><td>Выдать материалы</td><td>
+						<form action="handler.php" target="area ">
+							<div style="height: 20px;"><input type="number" min="0" max="999" required style="width: 55px;" placeholder=" 0 " name="number">
+							<input type="submit" class='btn btn-primary btn-sm' value="Выдать"></div>
+						</form>
+					</td></tr>
 					<tr><td>Кол-во выданных материалов</td><td><?=users($id,'quantity')?></td></tr>
 					<tr><td>Рабочие дни</td><td><?
 						$wdw=result('sheduler',"user=$id",'cdate',9);
