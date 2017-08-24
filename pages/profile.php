@@ -98,8 +98,8 @@
 					<tr><td>Логин</td><td><?=users($id,'login')?></td></tr>
 					<?}else{?>
 					<tr><td>Выдать материалы</td><td>
-						<form action="handler.php" target="area ">
-							<div style="height: 20px;"><input type="number" min="0" max="999" required style="width: 55px;" placeholder=" 0 " name="number">
+						<form action="javascript:insert()" method="post" id="formSupply">
+							<div style="height: 20px;"><input id="contentText" type="number" min="0" max="999" required style="width: 55px;" placeholder=" 0 " name="content_txt">
 							<input type="submit" class='btn btn-primary btn-sm' value="Выдать"></div>
 						</form>
 					</td></tr>
@@ -154,4 +154,63 @@
 		</form>
 	</div>
 </div>
-<?}?>
+		<script>
+			$(document).ready(function() {
+				// Добавляем новую запись, когда произошел клик по кнопке
+				$("#formSupply").submit(function (e) {
+					e.preventDefault();
+
+					if($("#contentText").val()==="") //simple validation
+					{
+						alert("Введите текст!");
+						return false;
+
+					}
+					else {
+						function createObject() {
+							var request_type;
+							var browser = navigator.appName;
+							if(browser == "Microsoft Internet Explorer"){
+								request_type = new ActiveXObject("Microsoft.XMLHTTP");
+							}else{
+								request_type = new XMLHttpRequest();
+							}
+							return request_type;
+						}
+						var http = createObject();
+
+						/* -------------------------- */
+						/* INSERT */
+						/* -------------------------- */
+
+
+						function insert() {
+
+							// Required: verify that all fileds is not empty. Use encodeURI() to solve some issues about character encoding.
+							var contentText= encodeURI(document.getElementById('contentText').value);
+							//var site_name = encodeURI(document.getElementById('site_name').value);
+							// Set te random number to add to URL request
+							nocache = Math.random();
+							// Pass the login variables like URL variable
+							http.open('get', 'insert.php?site_url='+site_url+'&site_name=' +site_name+'&nocache = '+nocache);
+							http.onreadystatechange = insertReply;
+							http.send(null);
+						}
+						function insertReply() {
+							if(http.readyState == 4){
+								var response = http.responseText;
+;
+							}
+						}
+
+
+					}
+
+
+				});
+			});
+		</script>
+
+	<?}?>
+
+
