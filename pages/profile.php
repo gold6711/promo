@@ -97,12 +97,22 @@
 				<?if(users($id,'status')<4){?>
 					<tr><td>Логин</td><td><?=users($id,'login')?></td></tr>
 					<?}else{?>
+
+
+<!-- ***********************************************  ввод на странице и запись  базу     ****************************************** -->
+
 					<tr><td>Выдать материалы</td><td>
 						<form action="javascript:insert()" method="post" id="formSupply">
-							<div style="height: 20px;"><input id="contentText" type="number" min="0" max="999" required style="width: 55px;" placeholder=" 0 " name="content_txt">
-							<input type="submit" class='btn btn-primary btn-sm' value="Выдать"></div>
+							<div class="form_style" style="height: 20px;"><input id="contentNum" type="number" min="0" max="999" required style="width: 55px;" placeholder=" 0 " name="content_num">
+							<button class='btn btn-primary btn-sm' id="FormSubmit">Выдать</button>
+<!--						<input type="submit" class='btn btn-primary btn-sm' value="Выдать"></div>-->
 						</form>
 					</td></tr>
+
+
+<!-- ***********************************************  ввод на странице и запись  базу     ***************************************** -->
+
+
 					<tr><td>Кол-во выданных материалов</td><td><?=users($id,'quantity')?></td></tr>
 					<tr><td>Рабочие дни</td><td><?
 						$wdw=result('sheduler',"user=$id",'cdate',9);
@@ -154,63 +164,34 @@
 		</form>
 	</div>
 </div>
-		<script>
-			$(document).ready(function() {
-				// Добавляем новую запись, когда произошел клик по кнопке
-				$("#formSupply").submit(function (e) {
-					e.preventDefault();
 
-					if($("#contentText").val()==="") //simple validation
-					{
-						alert("Введите текст!");
-						return false;
+<?}?>
 
-					}
-					else {
-						function createObject() {
-							var request_type;
-							var browser = navigator.appName;
-							if(browser == "Microsoft Internet Explorer"){
-								request_type = new ActiveXObject("Microsoft.XMLHTTP");
-							}else{
-								request_type = new XMLHttpRequest();
-							}
-							return request_type;
-						}
-						var http = createObject();
+<script>
+	$(document).ready(function() {
+		// Добавляем новую запись, когда произошел клик по кнопке
+		$("#FormSubmit").click(function () {
 
-						/* -------------------------- */
-						/* INSERT */
-						/* -------------------------- */
+			if($("#contentNum").val()==="")
+			{
+				alert("Введите текст!");
+				return false;
+			}
+			var myData = "content_num="+ $("#contentNum").val();
 
-
-						function insert() {
-
-							// Required: verify that all fileds is not empty. Use encodeURI() to solve some issues about character encoding.
-							var contentText= encodeURI(document.getElementById('contentText').value);
-							//var site_name = encodeURI(document.getElementById('site_name').value);
-							// Set te random number to add to URL request
-							nocache = Math.random();
-							// Pass the login variables like URL variable
-							http.open('get', 'insert.php?site_url='+site_url+'&site_name=' +site_name+'&nocache = '+nocache);
-							http.onreadystatechange = insertReply;
-							http.send(null);
-						}
-						function insertReply() {
-							if(http.readyState == 4){
-								var response = http.responseText;
-;
-							}
-						}
-
-
-					}
-
-
-				});
+			$.ajax({
+				type: "POST",
+				url: "response.php",
+				dataType:"text",
+				data: myData,
+				success:function(data){
+					$("#responds").append(data);
+					$("#contentText").val(''); //очищаем текстовое поле после успешной вставки
+				},
+				error:function (xhr, ajaxOptions, thrownError){
+					alert(thrownError); //выводим ошибку
+				}
 			});
-		</script>
-
-	<?}?>
-
-
+		});
+	});
+</script>
