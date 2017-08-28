@@ -32,7 +32,7 @@ else{file_put_contents('files/bad.txt',1);}
 if((!user('id') and basename($_SERVER["SCRIPT_NAME"])!="logon.php" and !isset($_GET['period'])) or $_GET['act']=="exit"){
 if($_GET['act']=='exit' and isset($_SESSION['token'])){unset($_SESSION['token']);session_destroy();}
 if(basename($_SERVER["SCRIPT_NAME"])!="logon.php"){
-header('Location: http://'.$_SERVER['SERVER_NAME'].'/logon.php');
+//header('Location: http://'.$_SERVER['SERVER_NAME'].'/logon.php');
 }}
 
 
