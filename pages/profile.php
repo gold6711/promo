@@ -102,8 +102,8 @@
 <!-- ***********************************************  ввод на странице и запись  базу     ****************************************** -->
 
 					<tr><td>Выдать материалы</td><td>
-						<form action="javascript:insert()" method="post" id="formSupply">
-							<div class="form_style" style="height: 20px;"><input id="contentNum" type="number" min="0" max="999" required style="width: 55px;" placeholder=" 0 " name="content_num">
+						<form>
+							<div class="form_style" style="height: 20px;"><input name="content_txt" id="contentNum" type="number" min="0" max="999" required style="width: 55px;" placeholder=" 0 ">
 							<button class='btn btn-primary btn-sm' id="FormSubmit">Выдать</button>
 <!--						<input type="submit" class='btn btn-primary btn-sm' value="Выдать"></div>-->
 						</form>
@@ -177,15 +177,15 @@
 				alert("Введите текст!");
 				return false;
 			}
-			var myData = "content_num="+ $("#contentNum").val();
+			var myData = '12';//"content_num="+ $("#contentNum").val();
 
 			$.ajax({
 				type: "POST",
 				url: "response.php",
 				dataType:"text",
 				data: myData,
-				success:function(data){
-					$("#responds").append(data);
+				success:function(){
+					//$("#responds").append(data);
 					$("#contentText").val(''); //очищаем текстовое поле после успешной вставки
 				},
 				error:function (xhr, ajaxOptions, thrownError){
